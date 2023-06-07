@@ -19,7 +19,9 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 import requests
-from urllib.error URLError
+import urllib.error
+
+# Rest of your code...
 # write your own comment -what does the next line do? 
 #fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
