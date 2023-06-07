@@ -1,4 +1,5 @@
 import  streamlit
+from urllib.error import URLError
 streamlit.title('My parents healthy new diner')
 streamlit.header('Breakfast Menu')
 streamlit.text('Omega 3 & Blueberry Oatmeal')
