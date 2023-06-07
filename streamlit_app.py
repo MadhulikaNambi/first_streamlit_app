@@ -45,4 +45,4 @@ streamlit.write('Thanks for adding ', fruit_choice)
 
 my_cur.execute("insert into fruit_load_list values('from streamlit')");
 
-from urllib.error URLERROR
+from urllib.error URLError
