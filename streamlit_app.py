@@ -19,6 +19,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 import requests
+from urllib.error URLError
 # write your own comment -what does the next line do? 
 #fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
@@ -57,7 +58,7 @@ streamlit.write('Thanks for adding ', fruit_choice)
 
 my_cur.execute("insert into fruit_load_list values('from streamlit')");
 
-from urllib.error URLError
+
 
                                   
                                        
