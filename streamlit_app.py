@@ -19,7 +19,7 @@ fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 
 import requests
-import urllib.error
+from urllib.error import URLError
 
 # Rest of your code...
 # write your own comment -what does the next line do? 
