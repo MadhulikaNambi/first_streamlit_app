@@ -27,7 +27,7 @@ def get_fruityvice_data(this_fruit_choice):
 streamlit.header("Fruityvice Fruit Advice!")
 
 try:
-    fruit_choice = streamlit.text_input('What fruit would you like information about?')
+    fruit_choice = streamlit.text_input('What fruit would you like information about?', key='fruit_info_input')
     if not fruit_choice:
         streamlit.error('Please enter a fruit to get info')
     else:
@@ -45,10 +45,10 @@ my_data_rows = my_cur.fetchall()
 streamlit.header("fruit load list contains:")
 streamlit.dataframe(my_data_rows)
 
-fruit_choice = streamlit.text_input('What fruit would you like to add?')
+fruit_choice = streamlit.text_input('What fruit would you like to add?', key='add_fruit_input')
 streamlit.write('Thanks for adding', fruit_choice)
 
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
+my_cur.execute("insert into fruit_load_list values (?)", (fruit_choice,))
 
 streamlit.header("The fruit load list contains:")
 
@@ -57,7 +57,7 @@ def get_fruit_load_list():
         my_cur.execute("select * from fruit_load_list")
         return my_cur.fetchall()
 
-if streamlit.button('Get Fruit List'):
+if streamlit.button('Get Fruit List', key='get_fruit_list_button'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     my_data_rows = get_fruit_load_list()
     my_cnx.close()
@@ -68,9 +68,9 @@ def insert_row_snowflake(new_fruit):
         my_cur.execute("insert into fruit_load_list values (?)", (new_fruit,))
         return "Thanks for adding " + new_fruit
     
-add_my_fruit = streamlit.text_input( 'What fruit would you like to add?')
-if streamlit.button('Add a Fruit to the List'):
+add_my_fruit = streamlit.text_input('What fruit would you like to add?', key='add_fruit_input')
+if streamlit.button('Add a Fruit to the List', key='add_fruit_button'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-    back_from_function = insert_row_snowflake (add_my_fruit)
+    back_from_function = insert_row_snowflake(add_my_fruit)
     my_cnx.close()
     streamlit.text(back_from_function)
